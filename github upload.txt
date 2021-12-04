@@ -1,0 +1,18 @@
+github에 파일 올리기
+
+github 프로그램 다운받기
+
+github 환경설정
+git config --global user.name "sonofshout"
+git config --global user.email "bluedreamz@hanmail.net"
+
+그리고 상태확인
+git config --list
+
+파일 올리기
+Visual Studio Code 의 터미널에서 Git bash로 변경후
+git init
+git add .(모든 파일을 올림)
+git commit -m "first commit"
+git remote add origin https://github.com/sonofshout/upbitautotrade.git
+git push origin master

@@ -2,8 +2,8 @@ import time
 import pyupbit
 import datetime
 
-access = "zT2cunu5lsGDxn9VbXOzJztGeZk7lHNkdxHOI7Tc"
-secret = "vj3Ze8KOvc8qeMDixVISRfnJ39jKaYXdQgCBTbG9"
+access = "x86K0OyPN4xGMNJSxxO5XlO2xf8S7JwbDiI7GmtP"
+secret = "0pDAdM4rEsr1RxRmR1Ej68bBFpgR3tr0IFG3PUZg"
 
 def get_target_price(ticker, k):
     """변동성 돌파 전략으로 매수 목표가 조회"""
@@ -40,20 +40,20 @@ print("autotrade start")
 while True:
     try:
         now = datetime.datetime.now()
-        start_time = get_start_time("KRW-ETH")
+        start_time = get_start_time("KRW-BTC")
         end_time = start_time + datetime.timedelta(days=1)
 
         if start_time < now < end_time - datetime.timedelta(seconds=10):
-            target_price = get_target_price("KRW-ETH", 0.36)
-            current_price = get_current_price("KRW-ETH")
+            target_price = get_target_price("KRW-BTC", 0.36)
+            current_price = get_current_price("KRW-BTC")
             if target_price < current_price:
                 krw = get_balance("KRW")
                 if krw > 5000:
-                    upbit.buy_market_order("KRW-ETH", krw*0.9995)
+                    upbit.buy_market_order("KRW-BTC", krw*0.9995)
         else:
-            eth = get_balance("ETH")
-            if eth > 0.00008:
-                upbit.sell_market_order("KRW-ETH", eth*0.9995)
+            btc = get_balance("BTC")
+            if btc > 0.00008:
+                upbit.sell_market_order("KRW-BTC", btc*0.9995)
         time.sleep(1)
     except Exception as e:
         print(e)
